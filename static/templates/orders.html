@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+    
+{% block content %}
+
+{% if orders.count > 0 %}
+
+<h1>Orders</h1>
+
+
+<div class="page-header">
+			</div>
+			<div class="table-responsive">
+			<table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>OrderDate</th>
+                        <th>RequireDate</th>
+                        <th>ShippedDate</th>
+                        <th>ShipVia</th>
+                        <th>ShipName</th>
+                        <th>ShipCity</th>
+                        <th>ShipRegion</th>
+                        <th>ShipCountry</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+{% for order in orders %}
+                    <tr>
+                        <td>{{order.id}}</td>
+                        <td>{{order.orderdate}}</td>
+                        <td>{{order.requireddate}}</td>
+                        <td>{{order.shippeddate}}</td>
+                        <td>{{order.shipvia}}</td>
+                        <td>{{order.shipname}}</td>
+                        <td>{{order.shipcity}}</td>
+                        <td>{{order.shipregion}}</td>
+                        <td>{{order.shipcountry}}</td>
+                        <td>
+                        <form action="" method="POST"> 
+                            {% csrf_token %}
+                            <span class="glyphicon glyphicon-trash"></span>
+                            <input type="submit" value="#{{order.id}}" name="remove" class="btn btn-primary"> </input>
+                            </form>
+                        </td>
+                    </tr>
+{% endfor %}
+                    </tbody>
+             </table>
+</div>
+
+
+
+
+<div>
+
+
+
+{% else %}
+
+<p> None to show!</p>
+
+{% endif %}
+
+{% endblock %}

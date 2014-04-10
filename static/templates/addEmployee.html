@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+    
+{% block content %}
+    <div class="page-header">
+        <h1>Add order<br>
+            <small> Fill the formular to add new employee</small>
+        </h1>
+    </div>
+
+    <form method="POST" action=""> {% csrf_token %}
+        {{ form.as_p }}
+        <input type='submit' value = "Add New Employee" class="btn btn-primary btn-lg">
+    </form> 
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+    
+{% block content %}
+
+{% if categories.count > 0 %}
+
+<h1>Categories</h1>
+
+
+<div class="page-header">
+			</div>
+			<div class="table-responsive">
+			<table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>CategoryName</th>
+                        <th>Description</th>
+                        <th>Remove Category</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+{% for category in categories %}
+                    <tr>
+                        <td>{{category.id}}</td>
+                        <td>{{category.categoryname}}</td>
+                        <td>{{category.description}}</td>
+                        <td>
+                            <form action="" method="POST"> 
+                            {% csrf_token %}
+                            <span class="glyphicon glyphicon-trash"></span>
+                            <input type="submit" value="{{category.categoryname}} #{{category.id}}" name="remove" class="btn btn-primary"> </input>
+                            </form>
+                        </td>
+                    </tr>
+{% endfor %}
+                    </tbody>
+             </table>
+</div>
+
+
+
+
+<div>
+
+
+
+{% else %}
+
+<p> None to show!</p>
+
+{% endif %}
+
+{% endblock %}

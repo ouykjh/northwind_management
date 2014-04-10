@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+    
+{% block content %}
+
+{% if customers.count > 0 %}
+
+<h1>Customers</h1>
+
+
+<div class="page-header">
+			</div>
+			<div class="table-responsive">
+			<table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>CompanyName</th>
+                        <th>ContactName</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>Region</th>
+                        <th>Phone</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+{% for customer in customers %}
+                    <tr>
+                        <td>{{customer.customerid}}</td>
+                        <td>{{customer.companyname}}</td>
+                        <td>{{customer.contactname}}</td>
+                        <td>{{customer.address}}</td>
+                        <td>{{customer.city}}</td>
+                        <td>{{customer.region}}</td>
+                        <td>{{customer.phone}}</td>
+                        <td>
+                        <form action="" method="POST"> 
+                            {% csrf_token %}
+                            <span class="glyphicon glyphicon-trash"></span>
+                            <input type="submit" value="{{customer.customerid}}" name="remove" class="btn btn-primary"> </input>
+                            </form>
+                        </td>
+                    </tr>
+{% endfor %}
+                    </tbody>
+             </table>
+</div>
+
+
+
+
+<div>
+
+
+
+{% else %}
+
+<p> None to show!</p>
+
+{% endif %}
+
+{% endblock %}
