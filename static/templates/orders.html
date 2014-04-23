@@ -22,6 +22,8 @@
                         <th>ShipCity</th>
                         <th>ShipRegion</th>
                         <th>ShipCountry</th>
+                        <th>Customer</th>
+                        <th>Remove</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -36,14 +38,14 @@
                         <td>{{order.shipcity}}</td>
                         <td>{{order.shipregion}}</td>
                         <td>{{order.shipcountry}}</td>
+                        <td>{{order.customer}}</td>
                         <td>
                         <form action="" method="POST"> 
                             {% csrf_token %}
                             <span class="glyphicon glyphicon-trash"></span>
                             <input type="submit" value="#{{order.id}}" name="remove" class="btn btn-primary"> </input>
-                            </form>
+                        </form>
                         </td>
-                    </tr>
 {% endfor %}
                     </tbody>
              </table>
