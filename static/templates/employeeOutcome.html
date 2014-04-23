@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+    
+{% block content %}
+
+{% if employees.count > 0 %}
+
+    <div class="page-header">
+        <h1>Employees<br>
+            <small>Employees with given attributes are listed here</small>
+        </h1>
+    </div>
+
+            <div class="table-responsive">
+            <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>LastName</th>
+                        <th>FirstName</th>
+                        <th>Title</th>
+                        <th>Address</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+{% for employee in employees %}
+                    <tr>
+                        <td>{{employee.id}}</td>
+                        <td>{{employee.lastname}}</td>
+                        <td>{{employee.firstname}}</td>
+                        <td>{{employee.title}}</td>
+                        <td>{{employee.address}}</td>
+                        <td>
+                        <form action="" method="POST"> 
+                            {% csrf_token %}
+                            <span class="glyphicon glyphicon-trash"></span>
+                            <input type="submit" value="{{employee.lastname}} #{{employee.id}}" name="remove" class="btn btn-primary"> </input>
+                            </form>
+                        </td>
+                    </tr>
+{% endfor %}
+                    </tbody>
+             </table>
+</div>
+
+
+
+
+<div>
+
+
+
+{% else %}
+
+<p> None to show!</p>
+
+{% endif %}
+
+{% endblock %}

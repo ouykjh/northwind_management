@@ -21,10 +21,11 @@ urlpatterns = patterns('',
      url(r'^addCustomer', 'customers.views.addCustomer'),
      url(r'^addEmployee', 'employees.views.addEmployee'),
      url(r'^addRegion', 'regions.views.addRegion'),
+     url(r'^searchEmployee', 'employees.views.searchEmployee'),
 
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^admin/', include(admin.site.urls)),
+     url(r'^admin/', include(admin.site.urls)),
 )
 
 if settings.DEBUG:

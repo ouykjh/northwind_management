@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+    
+{% block content %}
+    <div class="page-header">
+        <h1>Look for employee<br>
+            <small>Type in one of listed attributes</small>
+        </h1>
+    </div>
+
+<form id="login_form" method="post" action="searchEmployee">
+    {% csrf_token %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th><b>Id:</b> <input type="text" name="Id" value="" size="20" /></th>
+                    </tr>
+                     <tr>
+                        <th><b>LastName:</b> <input type="text" name="LastName" value="" size="20" /></th>
+                    </tr>
+                    <tr>
+                        <th><b>FirstName:</b> <input type="text" name="FirstName" value="" size="20" /></th>
+                    </tr>
+                    <tr>
+                        <th><b>Title:</b> <input type="text" name="Title" value="" size="20" /></th>
+                    </tr>
+                    <tr>
+                        <th><b>Address:</b> <input type="text" name="Address" value="" size="50" /></th>
+                    </tr>
+                </thead>
+            </table>
+    </div>
+    <input type="submit" value="submit" class="btn btn-primary"/>
+</form>
+
+{% endblock %}
