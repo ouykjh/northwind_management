@@ -6,6 +6,33 @@
 
 <h1>Employees</h1>
 
+</div>
+    <form id="employeeForm" method="post" action="employees">
+        {% csrf_token %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <th>#</th>
+                    <th>LastName</th>
+                    <th>FirstName</th>
+                    <th>Title</th>
+                    <th>Address</th>
+                    <th>Szukaj</th>
+                </thead>
+            <tbody>
+            <tr>
+                <td><input type="text" name="Id" value="" size="10" /> </td>
+                <td><input type="text" name="LastName" value="" size="10" /></td>
+                <td><input type="text" name="FirstName" value="" size="10" /></td>
+                <td><input type="text" name="Title" value="" size="10" /></td>
+                <td><input type="text" name="Address" value="" size="10" /></td>
+                <td><input type="submit" value="Szukaj" class="btn btn-primary"/></span></td>
+            </tr>
+            </tbody>
+            </table>
+        </div>
+    </form>
+</div>
 
 <div class="page-header">
 			</div>

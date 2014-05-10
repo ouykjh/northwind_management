@@ -11,28 +11,7 @@ def employee(request):
 		id = _id.split('#');
 		Employee.objects.filter(id=int(id[1])).delete()
 
-	return render_to_response("employees.html",
-		 { 'employees' : Employee.objects.all()} ,
-		context_instance=RequestContext(request),
-		)
-
-def addEmployee(request):
-
-	form = EmployeeForm(request.POST or None)
-
-	if form.is_valid():
-		save_it = form.save(commit=False)
-		save_it.save()
-		return HttpResponseRedirect('employees')
-
-	return render_to_response("addEmployee.html",
-								locals(),
-								context_instance=RequestContext(request))
-
-def searchEmployee(request):
-	context = RequestContext(request)
-
-	if request.method == 'POST':
+	elif request.method == 'POST':
 		Id = request.POST['Id']
 		LastName = request.POST['LastName']
 		FirstName = request.POST['FirstName']
@@ -63,10 +42,23 @@ def searchEmployee(request):
 												 title__regex=Title,
 												 address__regex=Address)
 
-		return render_to_response("employeeOutcome.html",
-									locals(),
-									context_instance=RequestContext(request))
+	else:
+		employees = Employee.objects.all()
 
-	return render_to_response("searchEmployee.html",
+	return render_to_response("employees.html",
+								locals(),
+								context_instance=RequestContext(request))
+
+
+def addEmployee(request):
+
+	form = EmployeeForm(request.POST or None)
+
+	if form.is_valid():
+		save_it = form.save(commit=False)
+		save_it.save()
+		return HttpResponseRedirect('employees')
+
+	return render_to_response("addEmployee.html",
 								locals(),
 								context_instance=RequestContext(request))
