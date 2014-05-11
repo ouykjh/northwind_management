@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+    
+{% block content %}
+
+{% if customers.count > 0 %}
+
+<h1>Top ten orders with highest freight</h1>
+
+<div class="page-header">
+			</div>
+			<div class="table-responsive">
+			<table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Which</th>
+                        <th>OrderDate</th>
+                        <th>RequiredDate</th>
+                        <th>ShippedDate</th>
+                        <th>Freight</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+{% for customer in customers %}
+                    <tr>
+                        <td>{{customer.id}}</td>
+                        <td>{{customer.OrderDate}}</td>
+                        <td>{{customer.RequiredDate}}</td>
+                        <td>{{customer.ShippedDate}}</td>
+                        <td>{{customer.Freight}}</td>
+                        </td>
+{% endfor %}
+                    </tbody>
+             </table>
+</div>
+
+<a href="ordersManager" class="btn btn-info"><span class="glyphicon glyphicon-align-left"></span> customers Views List</a>
+
+
+
+<div>
+
+
+
+{% else %}
+
+<p> None to show!</p>
+
+{% endif %}
+
+{% endblock %}
+
+
+

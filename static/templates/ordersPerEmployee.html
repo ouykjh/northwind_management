@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+    
+{% block content %}
+
+{% if orders.count > 0 %}
+
+<h1>Number of orders per employee</h1>
+
+
+<div class="page-header">
+			</div>
+			<div class="table-responsive">
+			<table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>HowMany</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+{% for order in orders %}
+                    <tr>
+                        <td>{{order.id}}</td>
+                        <td>{{order.num_responses}}</td>
+                        </td>
+{% endfor %}
+                    </tbody>
+             </table>
+</div>
+
+<a href="ordersManager" class="btn btn-info"><span class="glyphicon glyphicon-align-left"></span> Orders Views List</a>
+
+
+
+<div>
+
+
+
+{% else %}
+
+<p> None to show!</p>
+
+{% endif %}
+
+{% endblock %}
+
+
+

@@ -6,6 +6,28 @@
 
 <h1>Categories</h1>
 
+</div>
+    <form id="categoryForm" method="post" action="categories">
+        {% csrf_token %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <th>#</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                </thead>
+            <tbody>
+            <tr>
+                <td><input type="text" name="Id" value="" size="10" /> </td>
+                <td><input type="text" name="CategoryName" value="" size="10" /></td>
+                <td><input type="text" name="Description" value="" size="10" /></td>
+                <td><input type="submit" value="Szukaj" class="btn btn-primary"/></span></td>
+            </tr>
+            </tbody>
+            </table>
+        </div>
+    </form>
+</div>
 
 <div class="page-header">
 			</div>

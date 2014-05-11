@@ -23,3 +23,4 @@ class Employee(models.Model):
     class Meta:
         db_table = 'employees'
 
+

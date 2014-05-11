@@ -6,6 +6,26 @@
 
 <h1>Regions</h1>
 
+</div>
+    <form id="regionsForm" method="post" action="regions">
+        {% csrf_token %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <th>#</th>
+                    <th>Description</th>
+                </thead>
+            <tbody>
+            <tr>
+                <td><input type="text" name="Id" value="" size="10" /> </td>
+                <td><input type="text" name="Description" value="" size="10" /></td>
+                <td><input type="submit" value="Szukaj" class="btn btn-primary"/></span></td>
+            </tr>
+            </tbody>
+            </table>
+        </div>
+    </form>
+</div>
 
 <div class="page-header">
 			</div>

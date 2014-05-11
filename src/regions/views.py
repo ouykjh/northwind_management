@@ -11,10 +11,26 @@ def region(request):
 		id = _id.split('#');
 		Region.objects.filter(id=int(id[1])).delete()
 
+	elif request.method == 'POST':
+		Id = request.POST['Id']
+		Description = request.POST['Description']
+
+		if Description == None:
+			Description = r".*"
+
+
+		if Id:
+			regions =  Region.objects.filter(pk = Id,
+											regiondescription__regex=Description)
+		else:
+			regions =  Region.objects.filter(regiondescription__regex=Description)
+
+	else:
+		regions = Region.objects.all()
+
 	return render_to_response("regions.html",
-		 { 'regions' : Region.objects.all()} ,
-		context_instance=RequestContext(request),
-		)
+								locals(),
+								context_instance=RequestContext(request))
 
 def addRegion(request):
 

@@ -6,6 +6,37 @@
 
 <h1>Customers</h1>
 
+</div>
+    <form id="customerForm" method="post" action="customers">
+        {% csrf_token %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <th>#</th>
+                    <th>CompanyName</th>
+                    <th>ContactName</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Region</th>
+                    <th>Phone</th>
+                </thead>
+            <tbody>
+            <tr>
+                <td><input type="text" name="Id" value="" size="10" /> </td>
+                <td><input type="text" name="CompanyName" value="" size="30" /></td>
+                <td><input type="text" name="ContactName" value="" size="20" /></td>
+                <td><input type="text" name="Address" value="" size="30" /></td>
+                <td><input type="text" name="City" value="" size="10" /></td>
+                <td><input type="text" name="Region" value="" size="10" /></td>
+                <td><input type="text" name="Phone" value="" size="10" /></td>
+                <td><input type="submit" value="Szukaj" class="btn btn-primary"/></span></td>
+            </tr>
+            </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+
 
 <div class="page-header">
 			</div>

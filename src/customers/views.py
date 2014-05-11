@@ -9,10 +9,57 @@ def customer(request):
 	if _id:
 		Customer.objects.filter(customerid=str(_id)).delete()
 
+	elif request.method == 'POST':
+		Id = request.POST['Id']
+		CompanyName = request.POST['CompanyName']
+		ContactName = request.POST['ContactName']
+		Address = request.POST['Address']
+		City = request.POST['City']
+		Region = request.POST['Region']
+		Phone = request.POST['Phone']
+
+		if CompanyName == None:
+			CompanyName = r".*"
+
+		if ContactName == None:
+			ContactName = r".*"
+		
+		if Address == None:
+			Address = r".*"
+
+		if City == None:
+			City = r".*"
+
+		if Region == None:
+			Region = r".*"
+
+		if Phone == None:
+			Phone = r".*"
+
+
+
+		if Id:
+			customers =  Customer.objects.filter(pk = Id,
+												 companyname__regex=CompanyName,
+												 contactname__regex=ContactName,
+												 address__regex=Address,
+												 city__regex=City,
+												 region__regex=Region,
+												 phone__regex=Phone)
+		else:
+			customers =  Customer.objects.filter(companyname__regex=CompanyName,
+												 contactname__regex=ContactName,
+												 address__regex=Address,
+												 city__regex=City,
+												 region__regex=Region,
+												 phone__regex=Phone)
+
+	else:
+		customers = Customer.objects.all()
+
 	return render_to_response("customers.html",
-		 { 'customers' : Customer.objects.all()} ,
-		context_instance=RequestContext(request),
-		)
+								locals(),
+								context_instance=RequestContext(request))
 
 def addCustomer(request):
 

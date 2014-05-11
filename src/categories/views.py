@@ -11,10 +11,32 @@ def category(request):
 		id = _id.split('#');
 		Category.objects.filter(id=int(id[1])).delete()
 
+	elif request.method == 'POST':
+		Id = request.POST['Id']
+		CategoryName = request.POST['CategoryName']
+		Description = request.POST['Description']
+
+		if CategoryName == None:
+			CategoryName = r".*"
+
+		if Description == None:
+			Description = r".*"
+		
+		if Id:
+			categories =  Category.objects.filter(pk = Id,
+												 categoryname__regex=CategoryName,
+												 description__regex=Description,)
+		else:
+			categories =  Category.objects.filter(categoryname__regex=CategoryName,
+												 description__regex=Description,)
+
+	else:
+		categories = Category.objects.all()
+
+
 	return render_to_response("categories.html",
-		 { 'categories' : Category.objects.all()} ,
-		context_instance=RequestContext(request),
-		)
+		 locals(),
+		context_instance=RequestContext(request))
 
 def addCategory(request):
 
