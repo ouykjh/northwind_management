@@ -21,6 +21,8 @@ urlpatterns = patterns('',
      url(r'^addCustomer', 'customers.views.addCustomer'),
      url(r'^addEmployee', 'employees.views.addEmployee'),
      url(r'^addRegion', 'regions.views.addRegion'),
+     url(r'^seafoodSuppliers', 'suppliers.views.seafoodSuppliers'),
+     url(r'^year1998Products', 'products.views.year1998OrderProducts'),
 
     # url(r'^blog/', include('blog.urls')),
 

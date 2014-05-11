@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+    
+{% block content %}
+
+
+
+<h1>Products ordered in 1998</h1>
+
+
+<div class="page-header">
+			</div>
+			<div class="table-responsive">
+			<table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>ProductName</th>
+                        <th>QuantityPerUnit</th>
+                        <th>UnitPrice</th>
+                        <th>UnitsInStock</th>
+                        <th>UnitsOnOrder</th>
+                        <th>ReorderLevel</th>
+                        <th>Discountinued</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+{% for prod in yearProducts %}
+                    <tr>
+                        <td>{{prod.id}}</td>
+                        <td>{{prod.productname}}</td>
+                        <td>{{prod.quantityperunit}}</td>
+                        <td>{{prod.unitprice}}</td>
+                        <td>{{prod.unitsinstock}}</td>
+                        <td>{{prod.unitsonorder}}</td>
+                        <td>{{prod.reorderlevel}}</td>
+                        <td>{{prod.discountinued}}</td>
+                    </tr>
+{% endfor %}
+                    </tbody>
+             </table>
+</div>
+
+
+
+
+<div>
+
+
+
+{% endblock %}
