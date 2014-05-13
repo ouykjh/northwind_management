@@ -2,6 +2,8 @@ from django.shortcuts import render, render_to_response, RequestContext
 from regions.models import Region
 from django.http import HttpResponseRedirect, HttpRequest
 from .forms import RegionForm
+from categories.models import Category
+from django.db import transaction
 
 # Create your views here.
 
@@ -44,3 +46,16 @@ def addRegion(request):
 	return render_to_response("addRegion.html",
 								locals(),
 								context_instance=RequestContext(request))
+
+#@transaction.atomic
+def atomicEmployeeAndOrder(request):
+	if request.POST.get("atomic", ""):
+		region = Region(pk = 5, regiondescription = "Polska");
+		region.save();
+
+		category = Category(categoryname="computers", description="super");
+		category.save();
+
+	return render_to_response("atomic.html",
+						locals(),
+						context_instance=RequestContext(request))

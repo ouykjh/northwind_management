@@ -30,6 +30,8 @@ ALLOWED_HOSTS = []
 
 APPEND_SLASH = True
 
+ATOMIC_REQUESTS = True
+
 # Application definition
 
 INSTALLED_APPS = (

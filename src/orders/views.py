@@ -2,6 +2,8 @@ from django.shortcuts import render, render_to_response, RequestContext
 from django.http import HttpResponseRedirect, HttpRequest
 from orders.models import Order
 from orders.models import EmployeeManger, EmployeePool,EmployeeHireDate, OrdersTopFreight
+from regions.models import Region
+
 # Create your views here.
 from .forms import OrderForm
 
@@ -53,3 +55,4 @@ def ordersFreightTop(request):
 	return render_to_response("ordersFreightTop.html",
 							locals(),
 							context_instance=RequestContext(request))
+

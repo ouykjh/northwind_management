@@ -27,6 +27,7 @@ urlpatterns = patterns('',
      url(r'^ordersFreightTop', 'orders.views.ordersFreightTop'),
      url(r'^seafoodSuppliers', 'suppliers.views.seafoodSuppliers'),
      url(r'^year1998Products', 'products.views.year1998OrderProducts'),
+     url(r'^atomic', 'regions.views.atomicEmployeeAndOrder'),
 
 
     # url(r'^blog/', include('blog.urls')),

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+    
+{% block content %}
+    <div class="page-header">
+        <h1>Atomic operation<br>
+            <small> Status of atomic operation should appear here</small>
+        </h1>
+    </div>
+
+	<form action="" method="POST"> 
+    	{% csrf_token %}
+        <input type="submit" value="Add atomicly Order and Employee" name="atomic" class="btn btn-primary"> </input>
+	</form>
+
+{% endblock %}
