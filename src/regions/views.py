@@ -3,7 +3,8 @@ from regions.models import Region
 from django.http import HttpResponseRedirect, HttpRequest
 from .forms import RegionForm
 from categories.models import Category
-from django.db import transaction
+from shippers.models import Shipper
+from django.db import transaction, IntegrityError
 
 # Create your views here.
 
@@ -47,7 +48,7 @@ def addRegion(request):
 								locals(),
 								context_instance=RequestContext(request))
 
-#@transaction.atomic
+@transaction.atomic
 def atomicEmployeeAndOrder(request):
 	if request.POST.get("atomic", ""):
 		region = Region(pk = 5, regiondescription = "Polska");
@@ -55,6 +56,20 @@ def atomicEmployeeAndOrder(request):
 
 		category = Category(categoryname="computers", description="super");
 		category.save();
+
+	if request.POST.get("savepoints", ""):
+		region = Region(pk = 5, regiondescription = "Polska");
+		region.save()
+		try:
+			spoint = transaction.savepoint()
+		
+			category = Category(categoryname="computers", description="super")
+			category.save();
+			raise Exception("I know python!")
+			transaction.savepoint_commit(spoint)
+		except Exception:
+			transaction.savepoint_rollback(spoint) 
+
 
 	return render_to_response("atomic.html",
 						locals(),
